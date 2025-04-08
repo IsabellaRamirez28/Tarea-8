@@ -47,9 +47,16 @@ public:
 
     virtual void consignar(int cant_consignar) {
         saldo += cant_consignar;
+        cout << "SALDO NUEVO: " << saldo << endl;
     }
 
-    virtual bool retirar(int cant_retirar) = 0;
+    virtual void retirar(int cant_retirar) = 0;
+
+    virtual void decrementar(int cantidad_transferir) = 0;
+
+    void incrementar(int cantidad_transferir) {
+        saldo += cantidad_transferir;
+    }
 
 protected:
     int numCuenta;

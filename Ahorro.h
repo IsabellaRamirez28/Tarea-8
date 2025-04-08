@@ -13,7 +13,7 @@ public:
         : Cuenta(num_cuenta, saldo, id_cliente),
           tasaInteres(tasa_interes) {}
 
-    double getTsasInteres() {return tasaInteres;}
+    double getTsasInteres() const {return tasaInteres;}
 
     void mostrarCuentas() const override {
         cout << "Numero: " << numCuenta;
@@ -35,16 +35,26 @@ public:
         {"tasaInteres", tasaInteres}};
     }
 
-    void aplicarInteres() {
+    void aplicarInteres() override {
         saldo = saldo + (saldo * tasaInteres);
     }
 
-    bool retirar(int cant_retirar) override {
+    void retirar(int cant_retirar) override {
         if (cant_retirar < saldo) {
             saldo -= cant_retirar;
-            return true;
+            cout << "SALDO NUEVO: " << saldo << endl;
+        } else {
+            cout << "SALDO INSUFICIENTE" << endl;
         }
-        return false;
+    }
+    void decrementar(int cantidad_transferir) override {
+        if (cantidad_transferir < saldo) {
+            saldo -= cantidad_transferir;
+            cout << "SALDO NUEVO: " << saldo << endl;
+            cout << "TRANSFERENCIA EXITOSA" << endl;
+        } else {
+            cout << "SALDO INSUFICIENTE" << endl;
+        }
     }
 
 private:

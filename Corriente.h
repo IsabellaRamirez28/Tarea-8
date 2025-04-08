@@ -18,10 +18,10 @@ public:
 
     void mostrarCuentas() const override {
         cout << "Numero: " << numCuenta;
-        cout << "Saldo: " << saldo;
-        cout << "ID Clinte: " << idCliente;
-        cout << "Limite de sobregiro: " << limSobregiro;
-        cout << "Tipo: Corriente" << endl;
+        cout << ", Saldo: " << saldo;
+        cout << ", ID Clinte: " << idCliente;
+        cout << ", Limite de sobregiro: " << limSobregiro;
+        cout << ", Tipo: Corriente" << endl;
     }
 
     string getTipo() const override {
@@ -32,16 +32,27 @@ public:
         return json{{"num_cuenta", numCuenta},
         {"saldo", saldo},
         {"idCliente", idCliente},
-        {"Tipo", "Corriente"},
-        {"Limite de Sobregiro", limSobregiro}};
+        {"Limite de Sobregiro", limSobregiro},
+        {"Tipo", "Corriente"}};
     }
 
-    bool retirar(int cant_retirar) override {
+    void retirar(int cant_retirar) override {
         if (cant_retirar < saldo + limSobregiro) {
             saldo -= cant_retirar;
-            return true;
+            cout << "SALDO NUEVO: " << saldo << endl;
+        } else {
+            cout << "SALDO INSUFICIENTE" << endl;
         }
-        return false;
+    }
+
+    void decrementar(int cantidad_transferir) override {
+        if (cantidad_transferir < saldo + limSobregiro) {
+            saldo -= cantidad_transferir;
+            cout << "SALDO NUEVO: " << saldo << endl;
+            cout << "TRANSFERENCIA EXITOSA" << endl;
+        } else {
+            cout << "SALDO INSUFICIENTE" << endl;
+        }
     }
 
 private:

@@ -81,25 +81,33 @@ public:
         cout << "Numero de cuentas: " << cuentas.size() << endl;
     }
 
-    bool tranferirCuentas(int origen, int destino, int cantidad_transferir);
+    void tranferirCuentas(int origen, int destino, int cantidad_transferir) {
+        for (const auto &cuenta : cuentas) {
+            if (cuenta->getNumCuenta() == origen) {
+                cuenta->decrementar(cantidad_transferir);
+            }
+        }
+        for (const auto &cuenta : cuentas) {
+            if (cuenta->getNumCuenta() == destino) {
+                cuenta->incrementar(cantidad_transferir);
+            }
+        }
+    }
 
-    bool consignarEnCuenta(int num_cuenta, int cant_consignar) {
+    void consignarEnCuenta(int num_cuenta, int cant_consignar) {
         for (const auto &cuenta : cuentas) {
             if (cuenta->getNumCuenta() == num_cuenta) {
                 cuenta->consignar(cant_consignar);
-                return true;
             }
         }
-        return false;
     }
 
-    bool retirarDeCuenta(int num_cuenta, int cant_retirar) {
+    void retirarDeCuenta(int num_cuenta, int cant_retirar) {
         for (const auto &cuenta : cuentas) {
             if (cuenta->getNumCuenta() == num_cuenta) {
-                return cuenta->retirar(cant_retirar);
+                cuenta->retirar(cant_retirar);
             }
         }
-        return false;
     }
 
 private:

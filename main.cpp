@@ -113,7 +113,7 @@ int main() {
                     cin >> destino;
                     cout << "Ingrese la cantidad a transferir: ";
                     cin >> cantidadTransferir;
-                    // banco.tranferirCuentas(origen, destino, cantidadTransferir);
+                    banco.tranferirCuentas(origen, destino, cantidadTransferir);
                 } else if (opcionesFinancieras == 3) {
                     int cantConsignar;
                     cout << "========CONSIGNAR========" << endl;
