@@ -7,7 +7,6 @@ using namespace std;
 
 int main() {
     Banco banco("Banco Javeriano");
-    vector<Cliente> clientes;
     string nombreCliente, direccionCliente, tipoCuenta;
     int saldo = 0, numCuenta, idCliente, negativoCorriente, opcion, opcionClientes, opcionCuentas, opcionEstadisticas, opcionesFinancieras;
 
@@ -61,13 +60,13 @@ int main() {
                         cout << "La tasa de interes del BANCO JAVERIANO ES 2%" << endl;
                         cout << "Ingrese el dinero (saldo): " << endl;
                         cin >> saldo;
-                        banco.agregarCuentaAhorros(idCliente, tasaInteres, saldo);
+                        banco.agregarCuentaAhorros(idCliente, saldo, tasaInteres);
                     } else if (tipoCuenta == "CORRIENTE") {
                         double limsobregiro = 5000;
                         cout << "El limite de sobregiro del BANCO JAVERIANO ES 5000" << endl;
                         cout << "Ingrese el dinero (saldo): ";
                         cin >> saldo;
-                        banco.agregarCuentaCorriente(idCliente, limsobregiro, saldo);
+                        banco.agregarCuentaCorriente(idCliente, saldo, limsobregiro);
                     } else {
                         cout << "TIPO DE CUENTA INVALIDA " << endl;
                     }
@@ -92,6 +91,7 @@ int main() {
                     banco.numTotalClientes();
                 } else if (opcionEstadisticas == 2) {
                     cout << "========TOTAL DE CUENTAS========" << endl;
+                    banco.numTotalCuentas();
                 }
                 break;
             }
@@ -101,10 +101,37 @@ int main() {
                 cout << "2. TRANSFERIR" << endl;
                 cout << "3. CONSIGNAR" <<endl;
                 cout << "4. RETIRAR" << endl;
-                cout << "5. CONSULTAR SALDO" << endl;
                 cin >> opcionesFinancieras;
                 if (opcionesFinancieras == 1) {
                     banco.aplicarInteres();
+                } else if (opcionesFinancieras == 2) {
+                    cout << "========TRANSFERIR========" << endl;
+                    int cantidadTransferir, origen, destino;
+                    cout << "Ingrese el numero de cuenta origen: ";
+                    cin >> origen;
+                    cout << "Ingrese el numero de cuenta destino: ";
+                    cin >> destino;
+                    cout << "Ingrese la cantidad a transferir: ";
+                    cin >> cantidadTransferir;
+                    // banco.tranferirCuentas(origen, destino, cantidadTransferir);
+                } else if (opcionesFinancieras == 3) {
+                    int cantConsignar;
+                    cout << "========CONSIGNAR========" << endl;
+                    cout << "Ingrese el numero de cuenta a consignar: ";
+                    cin >> numCuenta;
+                    cout << "Ingrese el dinero a consignar: ";
+                    cin >> cantConsignar;
+                    banco.consignarEnCuenta(numCuenta, cantConsignar);
+                } else if (opcionesFinancieras == 4) {
+                    int cantRetirar;
+                    cout << "========RETIRAR========" << endl;
+                    cout << "Ingrese el numero de cuenta del cual desea retirar: ";
+                    cin >> numCuenta;
+                    cout << "Ingrese el dinero a retirar: ";
+                    cin >> cantRetirar;
+                    banco.retirarDeCuenta(numCuenta, cantRetirar);
+                } else {
+                    cout << "OPCION INVALIDA " << endl;
                 }
                 break;
             }

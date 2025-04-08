@@ -36,6 +36,14 @@ public:
         {"Limite de Sobregiro", limSobregiro}};
     }
 
+    bool retirar(int cant_retirar) override {
+        if (cant_retirar < saldo + limSobregiro) {
+            saldo -= cant_retirar;
+            return true;
+        }
+        return false;
+    }
+
 private:
     int limSobregiro;
 

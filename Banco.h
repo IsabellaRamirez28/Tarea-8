@@ -77,6 +77,31 @@ public:
         cout << "Numero de clientes: " << clientes.size() << endl;
     }
 
+    void numTotalCuentas() {
+        cout << "Numero de cuentas: " << cuentas.size() << endl;
+    }
+
+    bool tranferirCuentas(int origen, int destino, int cantidad_transferir);
+
+    bool consignarEnCuenta(int num_cuenta, int cant_consignar) {
+        for (const auto &cuenta : cuentas) {
+            if (cuenta->getNumCuenta() == num_cuenta) {
+                cuenta->consignar(cant_consignar);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    bool retirarDeCuenta(int num_cuenta, int cant_retirar) {
+        for (const auto &cuenta : cuentas) {
+            if (cuenta->getNumCuenta() == num_cuenta) {
+                return cuenta->retirar(cant_retirar);
+            }
+        }
+        return false;
+    }
+
 private:
     string nombre;
     vector<Cliente> clientes;

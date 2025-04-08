@@ -19,7 +19,7 @@ public:
           saldo(saldo),
           idCliente(id_cliente) {}
 
-    int getNum_cuenta() const {
+    int getNumCuenta() const {
         return numCuenta;
     }
 
@@ -44,6 +44,12 @@ public:
         {"saldo", saldo},
         {"idCliente", idCliente}};
     }
+
+    virtual void consignar(int cant_consignar) {
+        saldo += cant_consignar;
+    }
+
+    virtual bool retirar(int cant_retirar) = 0;
 
 protected:
     int numCuenta;

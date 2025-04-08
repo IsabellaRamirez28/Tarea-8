@@ -39,6 +39,14 @@ public:
         saldo = saldo + (saldo * tasaInteres);
     }
 
+    bool retirar(int cant_retirar) override {
+        if (cant_retirar < saldo) {
+            saldo -= cant_retirar;
+            return true;
+        }
+        return false;
+    }
+
 private:
     double tasaInteres;
 

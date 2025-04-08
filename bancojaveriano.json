@@ -1,7 +1,7 @@
 {
     "CLIENTES": [
         {
-            "direccion": "CALL3",
+            "direccion": "CALLE1",
             "id": 1,
             "nombre": "ISABELLA"
         },
@@ -16,8 +16,8 @@
             "Tipo": "Ahorros",
             "idCliente": 1,
             "num_cuenta": 100,
-            "saldo": 40.02,
-            "tasaInteres": 2000.0
+            "saldo": 49800.0,
+            "tasaInteres": 0.0
         }
     ],
     "NOMBRE": "Banco Javeriano"
