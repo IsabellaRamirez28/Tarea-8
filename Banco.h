@@ -73,6 +73,10 @@ public:
         file.close();
     }
 
+    void numTotalClientes() {
+        cout << "Numero de clientes: " << clientes.size() << endl;
+    }
+
 private:
     string nombre;
     vector<Cliente> clientes;

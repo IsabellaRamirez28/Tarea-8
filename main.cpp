@@ -86,14 +86,21 @@ int main() {
                 cout << "3. PROMEDIO DEL SALDO DE LAS CUENTAS" << endl;
                 cout << "4. NUMERO DE CUENTAS DE AHORRO" << endl;
                 cout << "5. NUMERO DE CUENTAS CORRIENTES" << endl;
+                cin >> opcionEstadisticas;
+                if (opcionEstadisticas == 1) {
+                    cout << "========TOTAL CLIENTES========" << endl;
+                    banco.numTotalClientes();
+                } else if (opcionEstadisticas == 2) {
+                    cout << "========TOTAL DE CUENTAS========" << endl;
+                }
                 break;
             }
             case 4: {
                 cout << "========OPERACIONES FINANCIERAS========" << endl;
-                cout << "1. ALICAR TASA DE INTERES A CUENTAS DE AHORRO";
-                cout << "2. TRANSFERIR";
-                cout << "3. CONSIGNAR";
-                cout << "4. RETIRAR";
+                cout << "1. ALICAR TASA DE INTERES A CUENTAS DE AHORRO" << endl;
+                cout << "2. TRANSFERIR" << endl;
+                cout << "3. CONSIGNAR" <<endl;
+                cout << "4. RETIRAR" << endl;
                 cout << "5. CONSULTAR SALDO" << endl;
                 cin >> opcionesFinancieras;
                 if (opcionesFinancieras == 1) {
